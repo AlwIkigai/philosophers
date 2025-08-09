@@ -6,38 +6,17 @@
 /*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:27:12 by asyed             #+#    #+#             */
-/*   Updated: 2025/08/03 21:24:40 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/09 18:17:42 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-/*
- * Process additional flags like --test that might come after the philosopher arguments
- */
-// remove before submission
-int process_special_flags(int ac, char **av)
-{
-	/* Check for --test flag which runs automated tests */
-	if (ac == 2 && strcmp(av[1], "--test args") == 0)
-	{
-		test_args();
-		return 1;
-	}
-	return 0;
-}
 
 int	main(int ac, char **av)
 {
 	t_table		table;
 
-	/* Check for special flags like --test */
-	// remove before submission
-
-	if (process_special_flags(ac, av))
-		return (0);
-
-	/* Validate arguments */
 	if (validate_args(ac, av) != 0)
 		return (1);
 

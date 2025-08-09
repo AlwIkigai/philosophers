@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asyed <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 18:54:24 by asyed             #+#    #+#              #
-#    Updated: 2025/07/27 17:51:42 by asyed            ###   ########.fr        #
+#    Updated: 2025/08/09 19:54:30 by asyed            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,12 @@ SRCS = main_utils.c\
 		routine.c\
 		main.c \
 		validate_args.c \
+		validate_check.c \
 		utils.c \
 		print_utils.c\
 		simulation.c\
 		init_utils.c\
-		monitor.c\
-		test.c
+		monitor.c
 
 OBJS = $(addprefix $(SRCSPATH), $(SRCS:.c=.o))
 

@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:00:59 by asyed             #+#    #+#             */
-/*   Updated: 2025/04/28 14:02:26 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/09 19:53:40 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/philo.h"
-
-// remove this part before submission
-void	set_def_args(int *ac, char ***av)
-{
-	if (*ac < 5)
-	{
-		/* Default: 5 philosophers, 800ms to die, 200ms to eat, 200ms to sleep, 3 meals max */
-		static char *default_av[] = {"./philo", "5", "800", "200", "200", "3"};
-		*ac = 6;
-		*av = default_av;
-	}
-}
 
 int	run_simulation(t_table *table)
 {
