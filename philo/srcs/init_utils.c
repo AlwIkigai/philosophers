@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:10:22 by asyed             #+#    #+#             */
-/*   Updated: 2025/08/03 21:43:13 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/13 13:48:45 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	allocate_values(t_table *table, int ac, char **av)
 {
-	table->num_philosophers = ft_atol(av[1]);
+	table->num_philo = ft_atol(av[1]);
 	table->time_to_die = ft_atol(av[2]);
 	table->time_to_eat = ft_atol(av[3]);
 	table->time_to_sleep = ft_atol(av[4]);
@@ -29,8 +29,8 @@ int	allocate_values(t_table *table, int ac, char **av)
 
 int	allocate_memory(t_table *table)
 {
-	table->philosophers = malloc(sizeof(t_philosopher) * table->num_philosophers);
-	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philosophers);
+	table->philosophers = malloc(sizeof(t_philosopher) * table->num_philo); // array of philosophers
+	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philo);
 	if (!table->philosophers || !table->forks)
 	{
 		allocate_memory_fail(table);
@@ -52,7 +52,7 @@ void	init_simul_mutex(t_table *table)
 	int	i;
 
 	i = 0;
-	while (i < table->num_philosophers)
+	while (i < table->num_philo)
 		pthread_mutex_init(&table->forks[i++], NULL);
 	pthread_mutex_init(&table->print_lock, NULL);
 	pthread_mutex_init(&table->death_lock, NULL);

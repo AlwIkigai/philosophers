@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:00:59 by asyed             #+#    #+#             */
-/*   Updated: 2025/08/09 19:53:40 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/13 13:45:21 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	join_philosophers_threads(t_table	*table)
 	int			join_index;
 
 	join_index = 0;
-	while (join_index < table->num_philosophers)
+	while (join_index < table->num_philo)
 	{
 		pthread_join(table->philosophers[join_index].thread, NULL);
 		join_index++;
@@ -60,7 +60,7 @@ void	check_simulation_end(t_table *table)
 	{
 		timestamp = get_current_time() - table->start_time;
 		printf(G "✅ 🍽️  Timestamp: %ld — All %d philosophers have eaten %d times. Ending routine.\n" RST,
-			timestamp, table->num_philosophers, table->meals_required);
+			timestamp, table->num_philo, table->meals_required);
 		printf(G "✅ 🍴 Total meals served: %d\n" RST, total_meals);
 	}
 	else if (!clean_end)
@@ -77,7 +77,7 @@ int	count_total_meals(t_table *table)
 
 	meal_index = 0;
 	total_meals = 0;
-	while (meal_index < table->num_philosophers)
+	while (meal_index < table->num_philo)
 	{
 		total_meals += table->philosophers[meal_index].meals_eaten;
 		meal_index++;

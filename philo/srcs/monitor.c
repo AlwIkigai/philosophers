@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 19:56:26 by asyed             #+#    #+#             */
-/*   Updated: 2025/07/27 17:51:42 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/13 13:45:21 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void *monitor_philosophers(void *arg)
 			return NULL;
 
 		/* If there is a meal limit and every philosopher is full, exit monitor */
-		if (table->meals_required > 0 && full_count == table->num_philosophers)
+		if (table->meals_required > 0 && full_count == table->num_philo)
 		{
 			// Make sure to exit cleanly when all philosophers have eaten enough
 			pthread_mutex_lock(&table->print_lock);
@@ -68,7 +68,7 @@ int	monitor_each_philosopher(t_table *table)
 	i = 0;
 	full_count = 0;
 
-	while (i < table->num_philosophers)
+	while (i < table->num_philo)
 	{
 		now = get_current_time();
 		/* Safely read each philosopher's last_meal_time and meals_eaten */
@@ -106,7 +106,7 @@ void	signal_death(t_table *table, int i, long now)
 void	destroy_mutexes(t_table *table)
 {
 	int i = 0;
-	while (i < table->num_philosophers)
+	while (i < table->num_philo)
 	{
 		pthread_mutex_destroy(&table->philosophers[i].meal_lock);
 		pthread_mutex_destroy(&table->forks[i++]);

@@ -6,7 +6,7 @@
 /*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:28:14 by asyed             #+#    #+#             */
-/*   Updated: 2025/08/09 19:55:06 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/13 17:44:26 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_philosopher
 /* Struct to store table settings and shared resources */
 typedef struct s_table
 {
-	int				num_philosophers;	/* Total number of philosophers */
+	int				num_philo;	/* Total number of philosophers */
 	int				time_to_die;		/* Time in ms before a philosopher dies */
 	int				time_to_eat;		/* Time in ms to eat */
 	int				time_to_sleep;		/* Time in ms to sleep */
@@ -102,7 +102,7 @@ void	allocate_memory_fail(t_table *table);
 void	init_simul_mutex(t_table *table);
 
 /* philo.c */
-void	*philosopher_routine(void *arg);
+void	*philosopher_routine(void *table_philosopher);
 int		check_if_dead(t_philosopher *philo);
 int		take_forks(t_philosopher *philo);
 int		lock_left_then_right(t_philosopher *philo);
@@ -110,6 +110,12 @@ int		lock_right_then_left(t_philosopher *philo);
 void	unlock_forks(t_philosopher *philo);
 
 /* routine.c */
+int		perform_philosopher_cycle(t_philosopher *philo);
+void	stagger_philosopher_start(t_philosopher *philo);
+long	calculate_wait_time(t_philosopher *philo, long time_since_last_meal);
+long	get_time_since_last_meal(t_philosopher *philo);
+int		check_meal_limit_reached(t_philosopher *philo);
+void	*handle_lone_philosopher(t_philosopher *philo);
 int		eating(t_philosopher *philo);
 void	sleeping(t_philosopher *philo);
 void	thinking(t_philosopher *philo);

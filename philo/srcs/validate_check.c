@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: asyed <asyed@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 19:11:06 by asyed             #+#    #+#             */
-/*   Updated: 2025/08/09 19:12:43 by asyed            ###   ########.fr       */
+/*   Updated: 2025/08/10 16:53:10 by asyed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,14 @@ int	check_value_range(char **av, int i, long value)
 		print_detailed_error("Num of philo must be > 0", i, av[i]);
 		return (1);
 	}
-	else if (i > 1 && value < 0)
+	else if (i >= 2 && i <= 4 && value < 60)
 	{
-		print_detailed_error("Time must be non-negative", i, av[i]);
+		print_detailed_error("Time values should be >= 60ms", i, av[i]);
+		return (1);
+	}
+	else if (i == 5 && value <= 0)
+	{
+		print_detailed_error("Number of meals must be > 0", i, av[i]);
 		return (1);
 	}
 	return (0);
